@@ -1,0 +1,71 @@
+# imports every file form tkinter and tkinter.ttk 
+from tkinter import *
+from tkinter.ttk import * 
+class RUN: 
+    def __init__(Pankaj, motion = None): 
+        Pankaj.motion = motion 
+          
+        # to take care movement in x direction 
+        Pankaj.x = 1
+        # to take care movement in y direction 
+        Pankaj.y = 0
+  
+        # canvas object to create shape 
+        Pankaj.canvas = Canvas(motion) 
+        # creating arc 
+        Pankaj.arc = Pankaj.canvas.create_arc( 
+                         5, 5, 25, 25,extent=180, fill = "black") 
+        Pankaj.canvas.pack() 
+  
+        # calling class's movement method to  
+        # move the arc 
+        Pankaj.movement() 
+      
+    def movement(Pankaj): 
+  
+        # This is where the move() method is called 
+        # This moves the arc to x, y coordinates 
+        Pankaj.canvas.move(Pankaj.arc, Pankaj.x, Pankaj.y) 
+  
+        Pankaj.canvas.after(100, Pankaj.movement) 
+      
+    # for motion in negative x direction 
+    def left(Pankaj, event): 
+        print(event.keysym) 
+        Pankaj.x = -5
+        Pankaj.y = 0
+      
+    # for motion in positive x direction 
+    def right(Pankaj, event): 
+        print(event.keysym) 
+        Pankaj.x = 5
+        Pankaj.y = 0
+      
+    # for motion in positive y direction 
+    def up(Pankaj, event): 
+        print(event.keysym) 
+        Pankaj.x = 0
+        Pankaj.y = -5
+      
+    # for motion in negative y direction 
+    def down(Pankaj, event): 
+        print(event.keysym) 
+        Pankaj.x = 0
+        Pankaj.y = 5
+  
+if __name__ == "__main__":
+  
+    # object of class Tk, resposible for creating 
+    # a tkinter toplevel window 
+    motion = Tk() 
+    RUN = RUN(motion) 
+  
+    # This will bind arrow keys to the tkinter 
+    # toplevel which will navigate the image or drawing 
+    motion.bind("<KeyPress-Left>", lambda e: RUN.left(e)) 
+    motion.bind("<KeyPress-Right>", lambda e: RUN.right(e)) 
+    motion.bind("<KeyPress-Up>", lambda e: RUN.up(e)) 
+    motion.bind("<KeyPress-Down>", lambda e: RUN.down(e)) 
+      
+    # Infnite loop breaks only by interrupt 
+    mainloop() 
