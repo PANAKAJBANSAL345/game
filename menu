@@ -1,0 +1,16 @@
+from tkinter import *
+my_game= Tk()
+from tkinter import ttk
+my_game.title("journey")
+my_game.configure(background="#C11B17")
+Label1=ttk.Label(my_game,text="           ",background="#C11B17",)
+Label1.grid(column=2,row=1)
+Label2=ttk.Label(my_game,text="               NI-D",background="#C11B17",font="times 100 italic ",foreground="yellow")
+Label2.grid(column=3,row=1)
+B1=Button(text="NEW ERA",background ="green",borderwidth=10,relief=RIDGE,font="times 20 italic ")
+B1.grid(column=1,row=1)
+B2=Button (text="  OPTION",background ="#7D0541",font="times 20 italic ",borderwidth=10,relief=RIDGE)
+B2.grid(column=1,row=2)
+B3=Button (text="    E X I T",background ="#562217",font="times 20 italic ",borderwidth=10,relief=RIDGE)
+B3.grid(column=1,row=3)
+my_game.mainloop()
